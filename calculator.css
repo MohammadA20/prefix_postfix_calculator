@@ -8,6 +8,40 @@
 
 body {
     position: relative;
-    text-align: center;
     top: 270px;
+    background-image: url("photos/pngtree-vector-background-of-scientific-and-technological-system-for-calculating-complex-data-image_1298991.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Calculator */
+
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    left: 150px;
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: rgba(199, 203, 199, 0.955);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    padding: 10px 10px 10px 10px;
+    align-items: center;
+}
+
+button {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgba(199, 203, 199, 0.955);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    margin: 5px 5px 5px 5px;
+}
+
+h1 {
+    border-radius: 10px;
+    background-color: blue;
 }
