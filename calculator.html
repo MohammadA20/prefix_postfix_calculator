@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css">
+    <title>Prefix & Postfix Calculator</title>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Prefix & Postfix Calculator</h1>
+        <div class="screen">
+            <input type="text" id="screen" value="|" placeholder="Enter your Prefix expression: ">
+            <span>
+                Postfix result:
+                <span id="postfix"></span>
+                 </span>
+        </div>
+        <div class="keyboard">
+            <div class="first-column">
+            <button class="seven">7</button>
+            <button class="eight">8</button>
+            <button class="nine">9</button>
+            <button class="delete">DEL</button>
+            <button class="clear">AC</button>
+        </div>
+        <div class="second-column">
+            <button class="four">4</button>
+            <button class="five">5</button>
+            <button class="six">6</button>
+            <button class="multiply">*</button>
+            <button class="division">/</button>
+        </div>
+        <div class="third-column">
+            <button class="one">1</button>
+            <button class="two">2</button>
+            <button class="three">3</button>
+            <button class="plus">+</button>
+            <button class="minus">-</button>
+        </div>
+        <div class="fourth-column">
+            <button class="zero">0</button>
+            <button class="dot">.</button>
+            <button class="percent">%</button>
+            <button class="power">^</button>
+            <button class="result">=</button>
+        </div>
+        </div>
+    </div>
+</body>
+    <script src="calculator.js"></script>
+</html>
