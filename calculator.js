@@ -27,6 +27,8 @@ const screen2 = document.getElementById(`screen2`);
 const postfix = document.getElementById('postfix');
 const prefix = document.getElementById('prefix');
 
+const toggle_mode = document.getElementById('toggle-mode');
+
 seven.addEventListener('click', () => {
     screen.value += '7';
 });
@@ -151,4 +153,10 @@ function calculatePostfix(postfix_expression) {
 
 equal.addEventListener('click', () => {
     postfix.innerHTML = calculatePrefix(screen.value);
+});
+
+toggle_mode.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const toggleButton = document.getElementById('toggle-mode');
+    toggleButton.textContent = document.body.classList.contains('dark') ? 'Dark Mode' : 'Light Mode';
 });
