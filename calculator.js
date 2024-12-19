@@ -117,44 +117,25 @@ function containOperator(operation) {
     return false;
 }
 
-function calculatePrefix(prefix) {
-    let stk = [];
-
-    for(let reverse = prefix.length - 1; reverse >= 0; reverse--) {
-        const operate = prefix[reverse];
-        
-    if  (containOperator(operate)) {
-        const operant1 = stk.pop();
-        const operant2 = stk.pop();
-
-        const result = setOperator(operate, operant1, operant2);
-        stk.push(result);
-    }
-    else {
-        stk.push(operate);
-    }
-}
-    return stk[0];
+function calculatePrefix(prefix_expression) {
+    
 }
 
-function calculatePostfix(postfix) {
-    let stk = [];
-
-    for(let i = 0; i < postfix.length; i++) {
-        const operate = postfix[i];
-
-        if (containOperator(operate)) {
-            const operant1 = stk.pop();
-            const operant2 = stk.pop();
-
-            const result = setOperator(operate, operant1, operant2);
-            stk.push(result);
-        }
-        else {
-            stk.push(operate);
+function calculatePostfix(postfix_expression) {
+    let operandStack = [];
+    for (let postfix = 0; postfix < postfix_expression.length - 1; postfix++) {
+        if (!containOperator(postfix_expression[postfix])) {
+            operandStack.push(postfix_expression[postfix]);
+        } else {
+            let operand1 = operandStack.pop();
+            let operand2 = operandStack.pop();
+            let result = setOperator(postfix_expression[postfix], operand1, operand2);
+            operandStack.push(result);
         }
     }
-    return stk[0];
+    return operandStack.pop();
 }
 
-equal.addEventListener('click', calculatePrefix);
+equal.addEventListener('click', () => {
+    postfix.innerHTML = calculatePostfix(screen.value);
+});
