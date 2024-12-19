@@ -23,7 +23,9 @@ const power = document.querySelector('.power');
 const equal = document.querySelector('.result');
 
 const screen = document.getElementById(`screen`);
+const screen2 = document.getElementById(`screen2`);
 const postfix = document.getElementById('postfix');
+const prefix = document.getElementById('prefix');
 
 seven.addEventListener('click', () => {
     screen.value += '7';
@@ -87,6 +89,70 @@ power.addEventListener('click', () => {
 });
 equal.addEventListener('click', () => {
     screen.value = eval(screen.value);
+});
+
+seven.addEventListener('click', () => {
+    screen2.value += '7';
+});
+eight.addEventListener('click', () => {
+    screen2.value += '8';
+});
+nine.addEventListener('click', () => {
+    screen2.value += '9';
+});
+del.addEventListener('click', () => {
+    screen2.value = screen2.value.slice(0, -1);
+});
+clear.addEventListener('click', () => {
+    screen2.value = '';
+});
+
+four.addEventListener('click', () => {
+    screen2.value += '4';
+});
+five.addEventListener('click', () => {
+    screen2.value += '5';
+});
+six.addEventListener('click', () => {
+    screen2.value += '6';
+});
+multiply.addEventListener('click', () => {
+    screen2.value += '*';
+});
+division.addEventListener('click', () => {
+    screen2.value += '/';
+});
+
+one.addEventListener('click', () => {    
+    screen2.value += '1';
+});
+two.addEventListener('click', () => {
+    screen2.value += '2';
+});
+three.addEventListener('click', () => {
+    screen2.value += '3';
+});
+plus.addEventListener('click', () => {
+    screen2.value += '+';
+});
+minus.addEventListener('click', () => {
+    screen2.value += '-';
+}); 
+
+zero.addEventListener('click', () => {
+    screen2.value += '0';
+});
+point.addEventListener('click', () => {
+    screen2.value += '.';
+});
+percent.addEventListener('click', () => {
+    screen2.value += '%';
+});
+power.addEventListener('click', () => {
+    screen2.value += '^';
+});
+equal.addEventListener('click', () => {
+    screen2.value = eval(screen2.value);
 });
 
 function setOperator(operator, operand1, operand2) {
