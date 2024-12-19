@@ -91,70 +91,6 @@ equal.addEventListener('click', () => {
     screen.value = eval(screen.value);
 });
 
-seven.addEventListener('click', () => {
-    screen2.value += '7';
-});
-eight.addEventListener('click', () => {
-    screen2.value += '8';
-});
-nine.addEventListener('click', () => {
-    screen2.value += '9';
-});
-del.addEventListener('click', () => {
-    screen2.value = screen2.value.slice(0, -1);
-});
-clear.addEventListener('click', () => {
-    screen2.value = '';
-});
-
-four.addEventListener('click', () => {
-    screen2.value += '4';
-});
-five.addEventListener('click', () => {
-    screen2.value += '5';
-});
-six.addEventListener('click', () => {
-    screen2.value += '6';
-});
-multiply.addEventListener('click', () => {
-    screen2.value += '*';
-});
-division.addEventListener('click', () => {
-    screen2.value += '/';
-});
-
-one.addEventListener('click', () => {    
-    screen2.value += '1';
-});
-two.addEventListener('click', () => {
-    screen2.value += '2';
-});
-three.addEventListener('click', () => {
-    screen2.value += '3';
-});
-plus.addEventListener('click', () => {
-    screen2.value += '+';
-});
-minus.addEventListener('click', () => {
-    screen2.value += '-';
-}); 
-
-zero.addEventListener('click', () => {
-    screen2.value += '0';
-});
-point.addEventListener('click', () => {
-    screen2.value += '.';
-});
-percent.addEventListener('click', () => {
-    screen2.value += '%';
-});
-power.addEventListener('click', () => {
-    screen2.value += '^';
-});
-equal.addEventListener('click', () => {
-    screen2.value = eval(screen2.value);
-});
-
 function setOperator(operator, operand1, operand2) {
     if  (operator === '+') {
         return operand1 + operand2;
@@ -184,17 +120,28 @@ function containOperator(operation) {
 }
 
 function calculatePrefix(prefix_expression) {
-    
+    let operatorStack = [];
+    for (let prefix = prefix_expression.length - 1; prefix >= 0; prefix--) {
+        if (containOperator(prefix_expression[prefix])) {
+            operatorStack.push(prefix_expression[prefix]);
+        } else {
+            let operand1 = Number(operatorStack.pop());
+            let operand2 = Number(operatorStack.pop());
+            let result = setOperator(prefix_expression[prefix], operand1, operand2);
+            operatorStack.push(result);
+        }
+    }
+    return operatorStack.pop();
 }
 
 function calculatePostfix(postfix_expression) {
     let operandStack = [];
-    for (let postfix = 0; postfix < postfix_expression.length - 1; postfix++) {
+    for (let postfix = 0; postfix < postfix_expression.length; postfix++) {
         if (!containOperator(postfix_expression[postfix])) {
             operandStack.push(postfix_expression[postfix]);
         } else {
-            let operand1 = operandStack.pop();
-            let operand2 = operandStack.pop();
+            let operand1 = Number(operandStack.pop());
+            let operand2 = Number(operandStack.pop());
             let result = setOperator(postfix_expression[postfix], operand1, operand2);
             operandStack.push(result);
         }
@@ -203,5 +150,5 @@ function calculatePostfix(postfix_expression) {
 }
 
 equal.addEventListener('click', () => {
-    postfix.innerHTML = calculatePostfix(screen.value);
+    postfix.innerHTML = calculatePrefix(screen.value);
 });
