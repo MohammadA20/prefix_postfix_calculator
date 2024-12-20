@@ -27,7 +27,7 @@ const screen2 = document.getElementById(`screen2`);
 const postfix = document.getElementById('postfix');
 const prefix = document.getElementById('prefix');
 
-const toggle_mode = document.getElementById('toggle-mode');
+const toggle_mode = document.getElementById('toggle');
 
 seven.addEventListener('click', () => {
     screen.value += '7';
@@ -110,7 +110,7 @@ function setOperator(operator, operand1, operand2) {
         return operand1 ** operand2;
     }
     else {
-        Promise.reject('Invalid operator');
+        throw new Error('Invalid Operater')
     }
 }
 
@@ -124,8 +124,8 @@ function containOperator(operation) {
 function calculatePrefix(prefix_expression) {
     let operatorStack = [];
     for (let prefix = prefix_expression.length - 1; prefix >= 0; prefix--) {
-        if (containOperator(prefix_expression[prefix])) {
-            operatorStack.push(prefix_expression[prefix]);
+        if (!containOperator(prefix_expression[prefix])) {
+            operatorStack.push(Number(prefix_expression[prefix]));
         } else {
             let operand1 = Number(operatorStack.pop());
             let operand2 = Number(operatorStack.pop());
@@ -135,6 +135,9 @@ function calculatePrefix(prefix_expression) {
     }
     return operatorStack.pop();
 }
+
+let prefixExpression = "+9*23";
+console.log(calculatePrefix(prefixExpression));
 
 function calculatePostfix(postfix_expression) {
     let operandStack = [];
@@ -150,13 +153,19 @@ function calculatePostfix(postfix_expression) {
     }
     return operandStack.pop();
 }
+let postfix_expression;
+postfix_expression.calculatePostfix("923*+");
 
 equal.addEventListener('click', () => {
-    postfix.innerHTML = calculatePrefix(screen.value);
+    postfix.innerHTML = calculatePostfix(screen.value);
+});
+
+equal.addEventListener('click', () => {
+    prefix.innerHTML = calculatePrefix(screen.value);
 });
 
 toggle_mode.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    const toggleButton = document.getElementById('toggle-mode');
-    toggleButton.textContent = document.body.classList.contains('dark') ? 'Dark Mode' : 'Light Mode';
-});
+    const modeButton = document.getElementById('toggle');
+    modeButton.body.classList.toggle('dark');
+})
