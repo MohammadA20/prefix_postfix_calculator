@@ -24,15 +24,15 @@
     <h3> - Prefix: Operator -> Operand 1 -> Operand 2 like +9*23 calculates 2 * 3 = 6 then 9 + 6 = 15 <br> <br> Explanation: Prefix will calculate from right to left so it will 3 then 2 then check * is operator or operant? <br> Operator then * is multiplication will multiply 2 by 3, continue with 9 take 9 so we have now <br> 6 and 9 after that we have + it's operator so it will add 9 with 6 to give 15 final result  <br> <br> - Postfix: Operand 1 -> Operand 2 -> Operator like  923*+ calculates 2 * 3 = 6 then 9 + 6 = 15 <br> <br> Explanation: We will begin with 9 take in stack then check 2 is operator? No, take in stack, 3 is operator? <br> No, take in stack, * is operator? Yes, then take the last 2 numbers in stack which are 2 and 3 and multiply <br> with each other to give 6. We have in stack 6 and 9, continue with + it's operator so it will <br> add 9 with 6 to give 15 final result</h3>
     <div class="calculator-container">
         <div class="screen">
-            <input type="text" id="screen" value="|" placeholder="Enter your Postfix expression: ">
+            <input type="text" id="screen" value="|" placeholder="Enter your expression: ">
             <span>
                 Postfix result:
                 <span id="postfix"></span>
                  </span>
 
                  <span>
-                    Postfix result:
-                    <span id="postfix"></span>
+                    Perfix result:
+                    <span id="prefix"></span>
                      </span>
         </div>
         <div class="keyboard">

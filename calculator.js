@@ -89,9 +89,6 @@ percent.addEventListener('click', () => {
 power.addEventListener('click', () => {
     screen.value += '^';
 });
-equal.addEventListener('click', () => {
-    screen.value = eval(screen.value);
-});
 
 function setOperator(operator, operand1, operand2) {
     if  (operator === '+') {
@@ -131,13 +128,12 @@ function calculatePrefix(prefix_expression) {
             let operand2 = Number(operatorStack.pop());
             let result = setOperator(prefix_expression[prefix], operand1, operand2);
             operatorStack.push(result);
+            console.log(operatorStack);
         }
     }
     return operatorStack.pop();
 }
 
-let prefixExpression = "+9*23";
-console.log(calculatePrefix(prefixExpression));
 
 function calculatePostfix(postfix_expression) {
     let operandStack = [];
@@ -153,19 +149,16 @@ function calculatePostfix(postfix_expression) {
     }
     return operandStack.pop();
 }
-let postfix_expression;
-postfix_expression.calculatePostfix("923*+");
 
 equal.addEventListener('click', () => {
-    postfix.innerHTML = calculatePostfix(screen.value);
-});
-
-equal.addEventListener('click', () => {
-    prefix.innerHTML = calculatePrefix(screen.value);
+    if(!isNaN(screen.value[0]))
+        postfix.innerHTML = calculatePostfix(screen.value);
+    else if(containOperator(screen.value[0]))
+        prefix.innerHTML = calculatePrefix(screen.value);   
 });
 
 toggle_mode.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     const modeButton = document.getElementById('toggle');
-    modeButton.body.classList.toggle('dark');
+    modeButton.classList.toggle('dark');
 })
